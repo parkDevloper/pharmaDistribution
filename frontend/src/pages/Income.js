@@ -24,7 +24,7 @@ const Income = () => {
     const fetchShops = async () => {
       setLoadingShops(true);
       try {
-        const res = await axios.get(medicalshops/search/?q=${searchTerm});
+        const res = await axios.get(`medicalshops/search/?q=${searchTerm}`);
         setShops(res.data);
       } catch (err) {
         console.error('Failed to search shops', err);
@@ -98,7 +98,7 @@ const Income = () => {
       const res = await axios.post('medicalshops/', { name: searchTerm.trim() });
       setSelectedShop(res.data);
       setShops([]);
-      alert(Added new shop: ${res.data.name});
+      alert(`Added new shop: ${res.data.name}`);
     } catch (err) {
       console.error('Failed to add new shop', err);
       alert('Failed to add new shop.');
@@ -161,7 +161,7 @@ const Income = () => {
                     disabled={addingShop}
                     className="ml-2 px-2 py-1 bg-green-600 text-white rounded hover:bg-green-700"
                   >
-                    {addingShop ? 'Adding...' : Add "${searchTerm}"}
+                    {addingShop ? 'Adding...' : `Add "${searchTerm}"`}
                   </button>
                 </div>
               )}
